@@ -3,6 +3,9 @@
 # Kill old instances
 killall -q swaybg
 
+# Launch foot server
+foot --server &
+
 # Wait for colors to be ready (from startup-wal)
 sleep 0.5
 

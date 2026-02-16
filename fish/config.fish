@@ -9,3 +9,9 @@ if status is-interactive; and not set -q KITTY_WEATHER_POPUP
     zoxide init --cmd cd fish | source   
 end
 
+if set -q WAYLAND_DISPLAY
+  and pgrep -x foot >/dev/null
+    pkill -USR1 foot  # Reloads config without killing server
+end
+source ~/.cache/wal/colors-fish >/dev/null 2>&1
+
