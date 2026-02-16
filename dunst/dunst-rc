@@ -1,0 +1,9 @@
+[global]
+    # Limit number of visible notifications
+    notification_limit = 3
+    
+    # Group duplicates (so 50 "Connected" messages become one "Connected (x50)")
+    stack_duplicates = true
+    
+    # Don't show history when they time out
+    history_length = 20

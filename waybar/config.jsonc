@@ -3,34 +3,37 @@
     "position": "top",
     "height": 30,
     "spacing": 4,
-    "modules-left": ["sway/workspaces", "sway/mode", "sway/window", "custom/uptime"],
+    "modules-left": ["dwl/tags", "dwl/mode", "dwl/window", "custom/uptime"],
     "modules-center": ["clock"],
     "modules-right": ["custom/weather", "cpu", "memory", "network", "pulseaudio", "battery", "tray"],
     "custom/uptime": {
-        "exec": "uptime -p | sed 's/up //'",
+        "exec": "awk '{printf(\"%d:%02d\", $1/3600, ($1%3600)/60)}' /proc/uptime",
         "interval": 60,
-        "format": " {}"
+        "format": " {}",
+        "tooltip": false
     },
-    "sway/window": {
+    "dwl/window": {
         "max-length": 50
     },
-    "sway/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "format": "{name}"
+    "dwl/tags": {
+        "num-tags": 9,
+        "tag-labels": ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    },
+    "dwl/mode": {
+        "format": "{}"
     },
     "clock": {
         "format": "{:%H:%M} ",
         "format-alt": "{:%Y-%m-%d}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        "tooltip-format": "<big>{:%Y %B}</big>\\n<tt><small>{calendar}</small></tt>"
     },
     "custom/weather": {
-    "format": "{}",
-    "tooltip": true,
-    "interval": 1800,
-    "exec": "~/.config/waybar/scripts/weather.sh",
-    "on-click": "FOOT_WEATHER_POPUP=1 foot --title Weather -e ~/.config/waybar/scripts/weather-popup.sh",
-    "return-type": "json"
+        "format": "{}",
+        "tooltip": true,
+        "interval": 1800,
+        "exec": "~/.config/waybar/scripts/weather.sh",
+        "on-click": "foot --app-id='weather_popup' --title='Weather' -e ~/.config/waybar/scripts/weather-popup.sh",
+        "return-type": "json"
     },
     "cpu": {
         "format": "{usage}% ",
@@ -77,4 +80,3 @@
         "format-icons": ["", "", "", "", ""]
     }
 }
-
