@@ -23,3 +23,40 @@ waybar >/dev/null 2>&1 &
 export XCURSOR_THEME=Adwaita
 export XCURSOR_SIZE=24
 
+cat > ~/.config/fuzzel/fuzzel.ini << EOF
+[main]
+font=JetBrainsMono Nerd Font:size=14
+dpi-aware=no
+prompt="❯ "
+icon-theme=Adwaita
+icons-enabled=yes
+fields=filename,name,generic
+password-character=*
+filter-desktop=yes
+match-mode=fzf
+sort-result=yes
+match-counter=yes
+
+# Center the box
+anchor=center
+lines=10
+width=40
+tabs=2
+horizontal-pad=20
+vertical-pad=20
+inner-pad=10
+
+image-size-ratio=0.5
+
+# Border
+layer=overlay
+exit-on-keyboard-focus-loss=yes
+
+[colors]
+background=282a36dd
+text=f8f8f2ff
+match=8be9fdff
+selection=44475add
+selection-text=f8f8f2ff
+border=bd93f9ff
+EOF
