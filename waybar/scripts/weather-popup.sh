@@ -11,6 +11,8 @@ fi
 
 clear
 
+printf "\033]2;Weather Popup\007"
+
 # Fetch weather into a variable first
 # -sL: Silent, Follow redirects
 # --max-time 5: Fail fast if no internet

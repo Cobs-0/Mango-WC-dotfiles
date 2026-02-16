@@ -1,0 +1,28 @@
+font: "JetBrainsMono Nerd Font 14"
+background: "{background}cc"
+color: "{foreground}"
+border: "{color4}"
+separator: " ➜ "
+
+menu:
+  "w":
+    desc: "Wallpaper"
+    cmd: "/home/ciano/.local/bin/select-wallpaper"
+  "f":
+    desc: "Find Files"
+    cmd: "/home/ciano/.local/bin/fzf-open"
+  "s":
+    desc: "Search Text"
+    cmd: "/home/ciano/.local/bin/search-text"
+  "b":
+    desc: "Bluetooth"
+    cmd: "blueman-manager"
+  "t":
+    desc: "Tools"
+    submenu:
+      "c": 
+        desc: "Calculator" 
+        cmd: "foot -e python3"
+      "n": 
+        desc: "Network" 
+        cmd: "foot -e nmtui"

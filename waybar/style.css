@@ -32,21 +32,42 @@ window#waybar {
     color: #ffffff; /* Ensure white text */
 }
 
-/* Workspaces / Tags */
 #tags button {
     padding: 0 10px;
     color: #ffffff;
     background: transparent;
-}
-
-#tags button.focused {
-    background: @color4; /* Primary accent color */
-    color: @background; /* Dark text on bright background (KEEP THIS for readability) */
+    border-radius: 16px;
+    transition: background-color 0.2s; /* Smooth transition */
 }
 
 #tags button.occupied {
-    background: @color8; /* Muted/Greyish for occupied tags */
+    background: @color8;
     color: #ffffff;
+}
+
+#tags button.focused, 
+#tags button.active,
+#tags button:checked {
+    background: @color4;
+    color: @background;
+    box-shadow: 0 0 5px @color4;
+    font-weight: bold;
+}
+
+#tags button.urgent {
+    background: @color1;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* Hover effect */
+#tags button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: inherit;
 }
 
 /* Window title */
