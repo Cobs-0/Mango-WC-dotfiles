@@ -1,0 +1,10 @@
+[main]
+include=~/.cache/wal/colors-foot.ini
+font=JetBrainsMono Nerd Font:size=12
+pad=15x15
+
+[colors]
+alpha=0.8
+background=1e1e2e
+foreground=cdd6f4
+
