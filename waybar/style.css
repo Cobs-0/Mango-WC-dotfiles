@@ -1,0 +1,102 @@
+* {
+    border: none;
+    border-radius: 20px;
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 14px;
+    min-height: 0;
+}
+
+/* Bar itself: fully transparent */
+window#waybar {
+    background: transparent;
+}
+
+/* Common pill style for most modules */
+#workspaces,
+#window,
+#clock,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#battery,
+#tray,
+#custom-uptime {
+    background: rgba(0, 0, 0, 0.6);
+    margin: 3px 4px;
+    padding: 3px 10px;
+    border-radius: 16px;
+}
+
+/* Workspaces */
+#workspaces button {
+    padding: 0 10px;
+    color: #ffffff;
+    background: transparent;
+}
+
+#workspaces button.focused {
+    background: #ff8c00;
+    color: #000000;
+}
+
+/* Window title */
+#window {
+    border-radius: 16px;
+    border-bottom: 2px solid #ff0000;
+    color: #ff8c00;
+}
+
+/* Clock */
+#clock {
+    padding: 0 18px;
+    color: #ff8c00;
+    font-weight: bold;
+}
+
+#custom-uptime {
+    padding: 0 10px;
+    color: #ff8c00;
+    font-weight: bold;
+}
+
+/* Resource / status modules with distinct colors */
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#battery {
+    font-weight: bold;
+    color: #000000;
+}
+
+/* Individual colors */
+#cpu            { background-color: #ff4500; }
+#memory         { background-color: #ffa500; }
+#network        { background-color: #ffd700; }
+#pulseaudio     { background-color: #ff8c00; }
+#battery        { background-color: #ff6347; }
+#custom-weather { background-color: #458588; }
+
+#battery.charging {
+    background-color: #26A65B;
+    color: #ffffff;
+}
+
+/* Tray */
+#tray {
+    padding: 0 10px;
+}
+
+/* Force weather module styling - must be last */
+#custom-weather {
+    background-color: #458588;
+    margin: 3px 4px;
+    padding: 3px 10px;
+    border-radius: 16px;
+    font-weight: bold;
+    color: #000000;
+    min-height: 20px;
+}
+
+

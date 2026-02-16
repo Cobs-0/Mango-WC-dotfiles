@@ -1,0 +1,80 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 4,
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/window", "custom/uptime"],
+    "modules-center": ["clock"],
+    "modules-right": ["custom/weather", "cpu", "memory", "network", "pulseaudio", "battery", "tray"],
+    "custom/uptime": {
+        "exec": "uptime -p | sed 's/up //'",
+        "interval": 60,
+        "format": " {}"
+    },
+    "sway/window": {
+        "max-length": 50
+    },
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{name}"
+    },
+    "clock": {
+        "format": "{:%H:%M} ",
+        "format-alt": "{:%Y-%m-%d}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "custom/weather": {
+    "format": "{}",
+    "tooltip": true,
+    "interval": 1800,
+    "exec": "~/.config/waybar/scripts/weather.sh",
+    "on-click": "FOOT_WEATHER_POPUP=1 foot --title Weather -e ~/.config/waybar/scripts/weather-popup.sh",
+    "return-type": "json"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false,
+        "on-click": "foot btop"
+    },
+    "memory": {
+        "format": "{}% ",
+        "on-click": "foot btop"
+    },
+    "network": {
+        "format-wifi": "",
+        "format-ethernet": "",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "on-click": "foot nmtui"
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+    }
+}
+
