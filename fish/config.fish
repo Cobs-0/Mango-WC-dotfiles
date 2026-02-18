@@ -15,3 +15,5 @@ if set -q WAYLAND_DISPLAY
 end
 source ~/.cache/wal/colors-fish >/dev/null 2>&1
 
+cat ~/.cache/wal/sequences &
+
