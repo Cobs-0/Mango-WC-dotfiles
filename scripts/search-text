@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+cd "$HOME" || exit 1
+
+QUERY=$(echo "" | fuzzel -d -p "Grep: " -l 0 -w 40)
+
+[ -z "$QUERY" ] && exit 0
+
+MATCH=$(rg --line-number --no-heading --color=never --smart-case "$QUERY" "$HOME/dotfiles" | \
+        fuzzel -d -p "Matches: " -w 100 -l 20)
+
+if [ -n "$MATCH" ]; then
+    FILE=$(echo "$MATCH" | cut -d: -f1)
+    LINE=$(echo "$MATCH" | cut -d: -f2)
+    
+    foot -e nvim "$FILE" "+$LINE"
+fi

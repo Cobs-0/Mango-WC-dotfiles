@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# 1. Pick a random wallpaper & Generate colors
+WALLPAPER_DIR="$HOME/Pictures/Backgrounds"
+RANDOM_BG=$(find "$WALLPAPER_DIR" -type f | shuf -n 1)
+
+if [ -n "$RANDOM_BG" ]; then
+    # Generate colors for MangoWC config (before it launches!)
+    wal -i "$RANDOM_BG" -n
+    # (Don't set wallpaper here, swaybg in autostart handles it)
+else
+    wal -R # Fallback to last theme
+fi
+
+# 2. Launch MangoWC
+exec mango
+

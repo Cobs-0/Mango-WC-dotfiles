@@ -17,3 +17,4 @@ source ~/.cache/wal/colors-fish >/dev/null 2>&1
 
 cat ~/.cache/wal/sequences &
 
+export XDG_DATA_DIRS="$HOME/.local/share/flatpak/exports/share:$XDG_DATA_DIRS:/var/lib/flatpak/exports/share"

@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+killall -q swaybg
+killall -q waybar
+
+WALL_DIR="$HOME/Pictures/Backgrounds"
+RANDOM_WALL=$(find "$WALL_DIR" -type f | shuf -n 1)
+
+if [ -n "$RANDOM_WALL" ]; then
+    wal -i "$RANDOM_WALL" -n -t
+    swaybg -i "$RANDOM_WALL" -m fill &
+else
+    swaybg -c "#333333" &
+fi
+

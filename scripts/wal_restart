@@ -1,0 +1,5 @@
+#!/usr/bin/env fish
+wal -i "$argv[1]"
+pkill -x foot-server 2>/dev/null; or pkill foot  # Soft fallback
+sleep 0.5
+foot --server >/dev/null 2>&1 &

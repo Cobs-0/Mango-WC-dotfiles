@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+cd "$HOME" || exit 1
+
+TARGET=$(fd --type f --exclude .git --base-directory "$HOME" | fuzzel -d -p "Open: " -w 60 -l 20)
+
+if [ -n "$TARGET" ]; then
+    foot -e nvim "$HOME/$TARGET"
+fi
+

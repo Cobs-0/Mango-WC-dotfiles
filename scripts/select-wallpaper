@@ -1,0 +1,66 @@
+#!/usr/bin/env fish
+
+# --- Configuration ---
+set WALL_DIR "$HOME/Pictures/Backgrounds"
+set LOG_FILE "/tmp/select-wallpaper.log"
+
+# --- Tools ---
+set FD fd
+set FUZZEL fuzzel
+set WAL wal
+set SWAYBG swaybg
+set WAYBAR waybar
+
+# --- Debug Logging ---
+# Redirect stdout and stderr to log file
+exec > $LOG_FILE 2>&1
+set -x  # Print commands for debugging
+
+# --- 1. Select Wallpaper ---
+# List files, pipe to fuzzel. 
+# -d: dmenu mode, -p: prompt, -w: width
+set SELECTED ($FD . "$WALL_DIR" --type f -e png -e jpg -e jpeg | $FUZZEL -d -p "Wallpaper: " -w 50)
+
+# If no selection (user pressed Esc), exit
+if test -z "$SELECTED"
+    echo "No wallpaper selected."
+    exit 0
+end
+
+# Resolve full path safely
+if string match -q "/*" "$SELECTED"
+    set FULL_PATH "$SELECTED"
+else
+    set FULL_PATH "$WALL_DIR/$SELECTED"
+end
+
+echo "Selected: $FULL_PATH"
+
+# --- 2. Apply Colors (Wal) ---
+# Run wal, skip setting wallpaper (-n) since we use swaybg
+$WAL -i "$FULL_PATH" -n
+
+# --- CRITICAL FIXES ---
+# Remove '#' from generated configs to prevent Fuzzel/Foot crashes
+sed -i 's/#//g' "$HOME/.cache/wal/colors-fuzzel.ini"
+sed -i 's/#//g' "$HOME/.cache/wal/colors-foot.ini"
+sed -i 's/#//g' "$HOME/.cache/wal/colors-swaylock"
+
+# --- 3. Reload UI ---
+# Kill incompatible background processes
+pkill swaybg
+pkill waybar
+
+# Restart Waybar (silently in background)
+nohup $WAYBAR >/dev/null 2>&1 &
+
+# Apply Wallpaper
+nohup $SWAYBG -i "$FULL_PATH" -m fill >/dev/null 2>&1 &
+
+# Reload Fuzzel (needs restart to pick up new config)
+pkill fuzzel
+
+# --- 4. Notify ---
+notify-send "Wallpaper Changed" (basename "$SELECTED")
+
+echo "Done."

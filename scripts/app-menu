@@ -1,0 +1,15 @@
+#!/bin/sh
+. "${HOME}/.cache/wal/colors.sh"
+
+# wmenu options:
+# -b : Bottom of screen (instead of top)
+# -i : Case insensitive
+# -l 10 : List 10 lines vertically (instead of horizontal)
+# -N/-n : Normal bg/fg
+# -M/-m : Selected bg/fg
+
+wmenu-run -i -l 10 \
+    -N "$color0" -n "$color7" \
+    -M "$color2" -m "$color0" \
+    -S "$color4" -s "$color0"
+
