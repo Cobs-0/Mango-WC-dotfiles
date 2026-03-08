@@ -1,0 +1,16 @@
+# Inside your dunstrc.template
+[urgency_low]
+    background = "{background}E6"
+    foreground = "{foreground}"
+    timeout = 10
+
+[urgency_normal]
+    background = "{background}E6"
+    foreground = "{foreground}"
+    timeout = 10
+
+[urgency_critical]
+    background = "{color1}E6"
+    foreground = "{foreground}"
+    frame_color = "{color1}"
+    timeout = 0
