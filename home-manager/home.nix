@@ -21,7 +21,7 @@
   xdg.configFile."wal/templates/dunstrc".text = ''
     [global]
     corner_radius=10
-    font="JetBrainsMono Nerd Font 10"
+    font="JetBrainsMono Nerd Font 14"
     force_xwayland=no
     format="<b>%s</b>\n%b"
     frame_width=2
@@ -36,7 +36,8 @@
     
     icon_position="left"
     layer="overlay"
-    max_icon_size=64
+    max_icon_size=128
+    enable_recursive_icon_lookup = true
     offset=(20,20)
     origin="top-right"
 
