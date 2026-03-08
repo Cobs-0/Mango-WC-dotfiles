@@ -13,7 +13,6 @@
   # dunst - notifications
   services.dunst = {
     enable = true;
-    # Tell Home Manager to point systemd directly to the Pywal output
     configFile = "${config.home.homeDirectory}/.cache/wal/dunstrc";
   };
 
@@ -23,6 +22,11 @@
     corner_radius=10
     font="JetBrainsMono Nerd Font 14"
     force_xwayland=no
+#    icon_theme = Adwaita
+#    enable_recursive_icon_lookup = true
+    icon_path = /run/current-system/sw/share/icons/Adwaita/32x32/status/:/run/current-system/sw/share/icons/Adwaita/32x32/devices/:/run/current-system/sw/share/icons/Adwaita/32x32/legacy/
+    min_icon_size = 64
+    max_icon_size = 64
     format="<b>%s</b>\n%b"
     frame_width=2
     gap_size=5

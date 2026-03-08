@@ -16,5 +16,5 @@ current=$(brightnessctl get)
 max=$(brightnessctl max)
 percent=$(( 100 * current / max ))
 
-dunstify -a "Brightness" -r 9994 -u low -h int:value:"$percent" -t "$notification_timeout" "Brightness: ${percent}%"
+dunstify -a "Brightness" -r 9994 -u low -i "/run/current-system/sw/share/icons/Adwaita/symbolic/status/display-brightness-symbolic.svg" -h int:value:"$percent" -t "$notification_timeout" "Brightness: ${percent}%"
 
